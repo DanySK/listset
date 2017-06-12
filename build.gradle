@@ -17,6 +17,7 @@ apply plugin: 'org.danilopianini.build-commons'
 apply plugin: "org.xtext.xtend"
 
 dependencies {
+    compile "com.google.guava:guava:${guavaVersion}"
     compile "org.eclipse.xtend:org.eclipse.xtend.lib:${xtendLibVersion}"
     compile "org.apache.commons:commons-collections4:${collections4Version}"
     testCompile "junit:junit:$junitVersion"
