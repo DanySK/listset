@@ -2,7 +2,7 @@ package org.danilopianini.util
 
 final class ListSets {
 	
-	static val ImmutableListSet<?> EMPTY = ImmutableListSet.newBuilder.build
+	static val ImmutableListSet<?> EMPTY = ImmutableListSet.of
 	
 	private new() {}
 	
