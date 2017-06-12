@@ -2,12 +2,13 @@ package org.danilopianini.util
 
 import com.google.common.collect.ImmutableList
 import java.util.Collection
+import org.eclipse.xtend.lib.annotations.Delegate
 
-class ImmutableListSet<E> extends ListBackedSet<E> {
+class ImmutableListSet<E> implements ListSet<E> {
+	
+	@Delegate val ImmutableList<E> base;
 
-	private new(ImmutableList<E> base) {
-		super(base)
-	}
+	private new(ImmutableList<E> base) { this.base = base }
 
 	def public static <E> of(E... elements) {
 		new ImmutableListSet(ImmutableList.copyOf(new LinkedListSet(elements)))
@@ -19,6 +20,10 @@ class ImmutableListSet<E> extends ListBackedSet<E> {
 
 	def public static <E> copyOf(Iterable<E> elements) {
 		ImmutableListSet.of(elements.toList)
+	}
+	
+	def public static <E> Builder<E> newBuilder() {
+		new Builder()
 	}
 
 	public static class Builder<E> {
