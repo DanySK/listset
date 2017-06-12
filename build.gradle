@@ -24,6 +24,10 @@ dependencies {
 
 apply plugin: 'org.danilopianini.javadoc.io-linker'
 
+tasks.withType(Checkstyle) {
+    exclude '**/xtend-gen/**'
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
