@@ -18,6 +18,7 @@ apply plugin: 'org.danilopianini.build-commons'
 dependencies {
     compile "org.eclipse.xtend:org.eclipse.xtend.lib:${xtendLibVersion}"
     compile "org.apache.commons:commons-collections4:${collections4Version}"
+    testCompile "junit:junit:$junitVersion"
 }
 
 apply plugin: 'org.danilopianini.javadoc.io-linker'
