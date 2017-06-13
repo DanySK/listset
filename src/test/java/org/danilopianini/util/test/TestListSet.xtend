@@ -10,6 +10,8 @@ import org.junit.Test
 
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.fail
+import org.danilopianini.util.ArrayListSet
+import java.util.Collections
 
 class TestListSet {
 	@Test def void testListBackedSet() {
@@ -50,5 +52,15 @@ class TestListSet {
 			immutable.add(0)
 			fail
 		} catch (UnsupportedOperationException e) {}
+	}
+
+	@Test def void testSort() {
+		val sort = new ArrayListSet(#[8, 7, 5, 4, 2, 3])
+		Collections.sort(sort)
+		assertEquals(new ArrayListSet(#[2, 3, 4, 5, 7, 8]), sort)
+		sort.add(1)
+		assertEquals(new ArrayListSet(#[2, 3, 4, 5, 7, 8, 1]), sort)
+		Collections.sort(sort)
+		assertEquals(new ArrayListSet(#[1, 2, 3, 4, 5, 7, 8]), sort)
 	}
 }
