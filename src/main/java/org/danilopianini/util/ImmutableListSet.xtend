@@ -26,6 +26,18 @@ class ImmutableListSet<E> implements ListSet<E> {
 		new Builder()
 	}
 
+	override def toString() {
+		base.toString
+	}
+	
+	override def hashCode() {
+		base.hashCode
+	}
+	
+	override def equals(Object o) {
+		base.equals(o)
+	}
+	
 	public static class Builder<E> {
 		val ListSet<E> contents = new LinkedListSet
 		public new() {}
