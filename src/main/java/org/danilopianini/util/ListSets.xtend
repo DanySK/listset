@@ -1,5 +1,8 @@
 package org.danilopianini.util
 
+import java.util.stream.Collector
+import java.util.stream.Collectors
+
 final class ListSets {
 	
 	static val ImmutableListSet<?> EMPTY = ImmutableListSet.of
@@ -13,5 +16,13 @@ final class ListSets {
 	def static <E> ListSet<E> emptyListSet() {
 		EMPTY as ListSet<E>
 	}
-	
+
+	def static <T> Collector<T, ?, ListSet<T>> toArrayListSet() {
+		Collectors.toCollection[new ArrayListSet]
+	}
+
+	def static <T> Collector<T, ?, ListSet<T>> toLinkedListSet() {
+		Collectors.toCollection[new LinkedListSet]
+	}
+
 }
