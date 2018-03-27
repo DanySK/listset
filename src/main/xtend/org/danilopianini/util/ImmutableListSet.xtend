@@ -10,15 +10,15 @@ class ImmutableListSet<E> implements ListSet<E> {
 
     private new(ImmutableList<E> base) { this.base = base }
 
-    def public static <E> ListSet<E> of(E... elements) {
+    def public static <E> ImmutableListSet<E> of(E... elements) {
         new ImmutableListSet(ImmutableList.copyOf(elements))
     }
 
-    def public static <E> ListSet<E> copyOf(Collection<E> elements) {
+    def public static <E> ImmutableListSet<E> copyOf(Collection<E> elements) {
         new ImmutableListSet(ImmutableList.copyOf(elements))
     }
 
-    def public static <E> ListSet<E> copyOf(Iterable<E> elements) {
+    def public static <E> ImmutableListSet<E> copyOf(Iterable<E> elements) {
         new ImmutableListSet(ImmutableList.copyOf(elements))
     }
     
