@@ -3,7 +3,6 @@ package org.danilopianini.util
 import com.google.common.collect.ImmutableList
 import java.util.Collection
 import org.eclipse.xtend.lib.annotations.Delegate
-import java.util.Iterator
 
 class ImmutableListSet<E> implements ListSet<E> {
     
