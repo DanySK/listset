@@ -48,6 +48,8 @@ class TestListSet {
 	@Test def void testImmutableListSet() {
 		val immutable = ImmutableListSet.newBuilder.add(0, 1, 1, 2, 2).build
 		assertEquals(3, immutable.size)
+		val immutable2 = ImmutableListSet.of(0, 1, 1, 2, 2)
+		assertEquals(3, immutable2.size)
 		try {
 			immutable.add(0)
 			fail

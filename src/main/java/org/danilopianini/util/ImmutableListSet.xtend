@@ -11,19 +11,19 @@ class ImmutableListSet<E> implements ListSet<E> {
     private new(ImmutableList<E> base) { this.base = base }
 
     def public static <E> ImmutableListSet<E> of(E... elements) {
-        new ImmutableListSet(ImmutableList.copyOf(elements))
+        copyOf(elements)
     }
 
     def public static <E> ImmutableListSet<E> copyOf(Collection<E> elements) {
-        new ImmutableListSet(ImmutableList.copyOf(elements))
+        copyOf(elements as Iterable<E>)
     }
 
     def public static <E> ImmutableListSet<E> copyOf(Iterable<E> elements) {
-        new ImmutableListSet(ImmutableList.copyOf(elements))
+        new Builder().addAll(elements).build
     }
     
     def public static <E> Builder<E> newBuilder() {
-        new Builder()
+        new Builder
     }
 
     override def toString() {
