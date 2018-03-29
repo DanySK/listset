@@ -17,4 +17,8 @@ interface ListSet<E> extends Set<E>, List<E>, Serializable {
 		List.super.spliterator()
 	}
 	
+	def boolean setEquals(Set<?> other) {
+		other !== null && size == other.size && containsAll(other)
+	}
+	
 }
