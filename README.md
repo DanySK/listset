@@ -26,8 +26,10 @@ I warmly suggest to use Gradle, Maven or a similar system to deal with dependenc
 
 or the following Gradle dependency:
 
-```Gradle
-compile 'org.danilopianini:listset:VERSION_YOU_WANT_TO_USE'
+```kotlin
+dependencies {
+    implementation("org.danilopianini:listset:VERSION_YOU_WANT_TO_USE")
+}
 ```
 
 Alternatively, you can grab the latest jar and throw it in your classpath. In this case, be sure to include the dependencies of this project in your classpath as well.
