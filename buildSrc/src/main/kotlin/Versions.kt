@@ -20,15 +20,19 @@ object Versions {
 
     const val org_danilopianini_javadoc_io_linker_gradle_plugin: String = "0.1.4"
 
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.0.0"
+
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.6.4"
 
     const val com_github_spotbugs_gradle_plugin: String = "1.6.9" // available: "2.0.0"
 
     const val org_xtext_xtend_gradle_plugin: String = "2.0.7"
 
-    const val org_eclipse_xtend_lib: String = "2.13.0" // available: "2.19.0"
+    const val org_eclipse_xtend_lib: String = "2.19.0"
 
-    const val commons_collections4: String = "4.1" // available: "4.4"
+    const val commons_collections4: String = "4.4"
+
+    const val ktlint: String = "0.34.2"
 
     const val guava: String = "25.0-jre"
 
