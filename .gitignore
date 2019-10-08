@@ -4,3 +4,4 @@ version.info
 build/
 *-gen/
 prepare_environment.sh
+.idea/
