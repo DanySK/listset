@@ -56,10 +56,12 @@ publishOnCentral {
     projectLongName.set("A Java collection that is both a List and a Set")
 }
 
-signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
+if (System.getenv("CI") == true.toString()) {
+    signing {
+        val signingKey: String? by project
+        val signingPassword: String? by project
+        useInMemoryPgpKeys(signingKey, signingPassword)
+    }
 }
 
 publishing {
