@@ -1,5 +1,3 @@
-import com.github.spotbugs.SpotBugsTask
-
 plugins {
     `java-library`
     signing
@@ -7,13 +5,12 @@ plugins {
     `project-report`
     `build-dashboard`
     jacoco
-    id("com.github.spotbugs") version Versions.com_github_spotbugs_gradle_plugin
-    id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
-    id("org.danilopianini.git-sensitive-semantic-versioning") version Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
-    id("org.danilopianini.javadoc.io-linker") version Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
-    id("org.danilopianini.publish-on-central") version Versions.org_danilopianini_publish_on_central_gradle_plugin
-    id("org.jlleitschuh.gradle.ktlint") version Versions.org_jlleitschuh_gradle_ktlint_gradle_plugin
-    id("org.xtext.xtend") version Versions.org_xtext_xtend_gradle_plugin
+    id("com.github.spotbugs")
+    id("org.danilopianini.git-sensitive-semantic-versioning")
+    id("org.danilopianini.javadoc.io-linker")
+    id("org.danilopianini.publish-on-central")
+    id("org.jlleitschuh.gradle.ktlint")
+    id("org.xtext.xtend")
 }
 
 gitSemVer {
@@ -36,18 +33,20 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-tasks.withType<SpotBugsTask> {
-    reports {
-        xml.setEnabled(false)
-        html.setEnabled(true)
+spotbugs {
+    setEffort("max")
+    setReportLevel("low")
+    showProgress.set(true)
+    val excludeFile = File("${project.rootProject.projectDir}/config/spotbugs/excludes.xml")
+    if (excludeFile.exists()) {
+        excludeFilter.set(excludeFile)
     }
-    ignoreFailures = false
-    effort = "max"
-    reportLevel = "low"
-    File("${project.rootProject.projectDir}/config/spotbugs/excludes.xml")
-        .takeIf { it.exists() }
-        ?.also { excludeFilterConfig = project.resources.text.fromFile(it) }
-        ?.also { println(it) }
+}
+
+tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
+    reports {
+        create("html") { enabled = true }
+    }
 }
 
 group = "org.danilopianini"
