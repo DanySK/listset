@@ -19,7 +19,8 @@ addons:
 stages:
   - check
   - test
-  - deploy
+  - name: deploy
+    if: repo = DanySK/listset AND type != pull_request
 
 env:
   global:
@@ -45,7 +46,6 @@ jobs:
         - *reference_jdk
     - stage: deploy
       name: "Reports and deployment"
-      if: repo = DanySK/listset AND type != pull_request
       os: *reference_os
       env:
         - PUBLISH="true"
