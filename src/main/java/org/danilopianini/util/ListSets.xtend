@@ -5,7 +5,7 @@ import java.util.stream.Collectors
 
 final class ListSets {
 	
-	static val ImmutableListSet<?> EMPTY = ImmutableListSet.of
+	static val ListSet<?> EMPTY = ImmutableListSet.newBuilder().build()
 	
 	private new() {}
 	

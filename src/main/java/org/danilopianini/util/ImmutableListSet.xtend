@@ -5,20 +5,16 @@ import java.util.Collection
 import org.eclipse.xtend.lib.annotations.Delegate
 
 class ImmutableListSet<E> implements ListSet<E> {
-    
-    @Delegate val ImmutableList<E> base;
+
+    @Delegate val ImmutableList<E> base
 
     private new(ImmutableList<E> base) { this.base = base }
 
     def public static <E> ImmutableListSet<E> of(E... elements) {
-        copyOf(elements)
+        new Builder().add(elements).build
     }
 
-    def public static <E> ImmutableListSet<E> copyOf(Collection<E> elements) {
-        copyOf(elements as Iterable<E>)
-    }
-
-    def public static <E> ImmutableListSet<E> copyOf(Iterable<E> elements) {
+    def public static <E> ImmutableListSet<E> copyOf(Iterable<? extends E> elements) {
         new Builder().addAll(elements).build
     }
     
@@ -57,5 +53,5 @@ class ImmutableListSet<E> implements ListSet<E> {
             return new ImmutableListSet(ImmutableList.copyOf(contents))
         }
     }
-    
+
 }
