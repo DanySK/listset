@@ -30,6 +30,8 @@ env:
   matrix:
     - *reference_jdk
     - JDK="adopt-openj9@1.8"
+    - JDK="adopt@"
+    - JDK="adopt-openj9@"
 
 jobs:
   exclude:
