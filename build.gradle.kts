@@ -22,10 +22,10 @@ repositories {
 }
 
 dependencies {
-    implementation(Libs.guava)
-    implementation(Libs.org_eclipse_xtend_lib)
-    implementation(Libs.commons_collections4)
-    testImplementation(Libs.junit)
+    implementation("com.google.guava:guava:_")
+    implementation("org.eclipse.xtend:org.eclipse.xtend.lib:_")
+    implementation("org.apache.commons:commons-collections4:_")
+    testImplementation("junit:junit:_")
 }
 
 java {
