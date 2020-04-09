@@ -2,15 +2,7 @@
 
 A collection that is both a list and a set, namely, a list without duplicates, or, in other words, an ordered set.
 
-## Status
-
-### Stable branch
-
 [![Build Status](https://travis-ci.org/DanySK/listset.svg?branch=master)](https://travis-ci.org/DanySK/listset)
-
-### Development branch
-
-[![Build Status](https://travis-ci.org/DanySK/listset.svg?branch=develop)](https://travis-ci.org/DanySK/listset)
 
 ## Import in your project
 
