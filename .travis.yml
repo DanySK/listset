@@ -64,7 +64,7 @@ jobs:
         - export ORG_GRADLE_PROJECT_signingKey=$(cat secrets.asc)
         - rm secrets.asc
       script:
-        - travis_retry ./gradlew publishAllPublicationsToMavenRepository
+        - travis_retry travis_wait 30 ./gradlew publishAllPublicationsToMavenRepository
 
 before_install:
   - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
