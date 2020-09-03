@@ -8,7 +8,7 @@ import java.io.Serializable
 /**
  * This interface represents an ordered set (or a list without duplicates). It is the reification of the Java intersection type:
  * 
- * List<E> & Set<E>
+ * List&lt;E&gt; &amp; Setlt;E&gt;
  * 
  * The default method spliterator() is inherited from List.
  */
