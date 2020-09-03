@@ -1,7 +1,6 @@
 package org.danilopianini.util
 
 import com.google.common.collect.ImmutableList
-import java.util.Collection
 import org.eclipse.xtend.lib.annotations.Delegate
 
 class ImmutableListSet<E> implements ListSet<E> {
@@ -10,33 +9,33 @@ class ImmutableListSet<E> implements ListSet<E> {
 
     private new(ImmutableList<E> base) { this.base = base }
 
-    def public static <E> ImmutableListSet<E> of(E... elements) {
+    def static <E> ImmutableListSet<E> of(E... elements) {
         new Builder().add(elements).build
     }
 
-    def public static <E> ImmutableListSet<E> copyOf(Iterable<? extends E> elements) {
+    def static <E> ImmutableListSet<E> copyOf(Iterable<? extends E> elements) {
         new Builder().addAll(elements).build
     }
     
-    def public static <E> Builder<E> newBuilder() {
+    def static <E> Builder<E> newBuilder() {
         new Builder
     }
 
-    override def toString() {
+    override toString() {
         base.toString
     }
     
-    override def hashCode() {
+    override hashCode() {
         base.hashCode
     }
     
-    override def equals(Object o) {
+    override equals(Object o) {
         base.equals(o)
     }
     
-    public static class Builder<E> {
+    static class Builder<E> {
         val ListSet<E> contents = new LinkedListSet
-        public new() {}
+        new() {}
         def Builder<E> add(E... elements) {
             contents.addAll(elements)
             this
