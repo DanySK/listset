@@ -48,6 +48,13 @@ jobs:
       os: *reference_os
       env:
         - *reference_jdk
+      workspaces:
+        create:
+          name: linux-reference-build
+          paths:
+            - "$TRAVIS_BUILD_DIR"
+      script:
+        - travis_retry ./gradlew check javadocJar
     - stage: deploy
       name: "Reports and deployment"
       os: *reference_os
@@ -59,6 +66,9 @@ jobs:
         - secure: "PIxf6SFrhB5y7JRca/7nc8/mp6ecbmboHA7aLIy72iaJCdwo3zBONxHdwZNTRbTRm7HP2bp6vs84Y7IcsmhOi7na/nods+guO4WYy/UUioPxkQBd4ba67KBR2rFeVlfJMqQZhudu7WuPySKnctYN3qiAky2nnOwNJElIqvHia8qUN/Qkj7tVCSI5b5X1KYfSVhWyP7oaVhf+0kJEtbdCgkSUj7sOIg2eJqhg7HhkeueqVoYP7y5/kyn99XP4vs6q9bGOEUoPIiggWZA/wxUtvxeQFLl6gp21DUQjrD/7WhBZYKrRnH2aRqd0IkxT3ZC51T4j3tP/JUum6tdqm4kYJRzefa+BynEFPBQq4grZL1angUJqY/8yU2eh9LalhhXWH40htGR4/t6+sCR7LGVgaG2PXjo1duJN89+6lKuv2+ypTQ42C2i3Zy/AR9UIBL7PQkSHtA/zoT59IZc9/Sy9GgpRMhT+h1Kw3Ufb1YPe9JdL/uJeN7kc7Zn303Z4r2SolWFBvhNxRIR/LrySivBLhAEmV0lDBH+eQyMFIEN9XJRZ4KTVjf8Bv/6Hr8bPzp+RS8s+lrfQoMojuKUwK8bEOf8d8PMzRLSGB/rLaZLVv3AS6o/r6MAy90YtdRDBMxSDEG4qPb6AAAMLVFSFr0nIjDHWdUsVnEsD9985vAIO7IA="
         - secure: "N+VjC0GtJ2IGiXZ88tJJQZys/K8dpen2FiEQXY1eZtRDIdRQ6ew5+ZVkrDOoNTVu82bRUBPU9hWkTBVkYArGQT+OwL0ApG0qWBNTJLa76ptHxcU1dsFM9Wqp82ErjXyrD0fV9SieQ1nvmC5RzwG7AXaqBEFNq1r8Auw69huxytLMFQRcHn1UR7LLY1HkDuApztb5lHL3Jz2kf/yV1tsFOFgcXGwEeSgRL3aN3tJIz2CDr1b0AeJV3e8TBeY4GLD5KNMFLdER8uQIQh+3+nJ1L/03TYT07giDKBevyqAjREUGHVRoQFIVSmPHa6ZibRp+gS+a2rBmfkkY1rNYAHlxGvvK8gAxQNoo2QlQk+0v3n1SxsOVtNE+r4l1u2VfkoNVcNm25uznkD0nAQWLSrUAc2SyTfknkrnRvKRO4sPuDj6jcoP9u80GMs7i0Ji2HHMURm9C/3fNwonWCnY1RRNF2Cc058S0V2ceGJ0cHIrLUCOOubBIEizI3lsDI/dp+Km3v2MCIqd7TmhEW5AJD3y9dBHH67bTL7TPw6crfFwXmCJJbpXS1zoNF4+I8hz/5Wy3gHzVzTEIy9P/LE/8fTiPj6HN9xPVw4O44q04CdWU/e9i++1AT4jvHyhFVNurBtAGuCKAIGqr6A52dddq3btF2QT+S8FbzAn7O9NBYDsJIzw="
         - *reference_jdk
+      workspaces:
+        use:
+          - linux-reference-build
       install:
         - openssl aes-256-cbc -K $encrypted_0f1727a4905b_key -iv $encrypted_0f1727a4905b_iv -in secrets.asc.enc -out secrets.asc -d
         - export ORG_GRADLE_PROJECT_signingKey=$(cat secrets.asc)
