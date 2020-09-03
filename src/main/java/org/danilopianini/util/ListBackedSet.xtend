@@ -17,19 +17,19 @@ class ListBackedSet<E> implements ListSet<E> {
 		backend = SetUniqueList.setUniqueList(base)
 	}
 	
-	override def sort(Comparator<? super E> c) {
+	override sort(Comparator<? super E> c) {
 		base.sort(c)
 	}
 
-	override def toString() {
+	override toString() {
 		base.toString
 	}
 	
-	override def hashCode() {
+	override hashCode() {
 		base.hashCode
 	}
 	
-	override def equals(Object o) {
+	override equals(Object o) {
 		base.equals(o)
 	}
 	

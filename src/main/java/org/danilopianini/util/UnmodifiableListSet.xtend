@@ -12,15 +12,15 @@ class UnmodifiableListSet<E> implements ListSet<E> {
 		this.base = Collections.unmodifiableList(base);
 	}
 	
-	override def toString() {
+	override toString() {
 		base.toString
 	}
 	
-	override def hashCode() {
+	override hashCode() {
 		base.hashCode
 	}
 	
-	override def equals(Object o) {
+	override equals(Object o) {
 		base.equals(o)
 	}
 	
