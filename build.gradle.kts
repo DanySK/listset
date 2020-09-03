@@ -1,9 +1,3 @@
-// buildscript {
-//    dependencies {
-//        classpath("org.eclipse.xtend:org.eclipse.xtend.lib:_")
-//    }
-// }
-
 plugins {
     `java-library`
     signing
