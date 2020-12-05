@@ -51,8 +51,8 @@ tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
 
 group = "org.danilopianini"
 publishOnCentral {
-    projectDescription.set("A collection that is both a list and a set, namely, a list without duplicates, or, in other words, an ordered set")
-    projectLongName.set("A Java collection that is both a List and a Set")
+    projectDescription = "A collection that is both a list and a set, namely, a list without duplicates, or, in other words, an ordered set"
+    projectLongName = "A Java collection that is both a List and a Set"
 }
 
 if (System.getenv("CI") == true.toString()) {
