@@ -13,10 +13,6 @@ plugins {
     id("org.xtext.xtend")
 }
 
-gitSemVer {
-    version = computeGitSemVer()
-}
-
 repositories {
     mavenCentral()
 }
