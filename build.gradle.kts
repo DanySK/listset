@@ -21,22 +21,32 @@ repositories {
     mavenCentral()
 }
 
+val transitiveDependenciesWorkaround by configurations.creating
+
 dependencies {
     implementation("com.google.guava:guava:_")
     implementation("org.eclipse.xtend:org.eclipse.xtend.lib:_")
     implementation("org.apache.commons:commons-collections4:_")
     testImplementation("junit:junit:_")
+    transitiveDependenciesWorkaround("org.eclipse.platform:org.eclipse.core.runtime:_")
+    transitiveDependenciesWorkaround("org.eclipse.platform:org.eclipse.equinox.common:_")
 }
 
 configurations.all {
-    val forcedVersions = mapOf(
-        "org.eclipse.core.runtime" to "3.19.0",
-        "org.eclipse.equinox.common" to "3.13.0",
-    )
-    resolutionStrategy {
-        eachDependency {
-            if (requested.group == "org.eclipse.platform") {
-                forcedVersions[requested.name]?.let { useVersion(it) }
+    val forcedTransitiveDependencies: Map<String, Map<String, String>> = transitiveDependenciesWorkaround
+        .apply { resolve() }
+        .dependencies
+        .map { Triple(it.group!!, it.name, it.version!!) }
+        .groupBy { (group, _, _) -> group }
+        .mapValues { (_, dependencies) ->
+            dependencies.map { (_, module, version) -> module to version }.toMap()
+        }
+    if (this != transitiveDependenciesWorkaround) {
+        resolutionStrategy {
+            eachDependency {
+                forcedTransitiveDependencies[requested.group]
+                    ?.get(requested.name)
+                    ?.let { useVersion(it) }
             }
         }
     }
