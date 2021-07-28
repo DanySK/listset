@@ -28,6 +28,20 @@ dependencies {
     testImplementation("junit:junit:_")
 }
 
+configurations.all {
+    val forcedVersions = mapOf(
+        "org.eclipse.core.runtime" to "3.19.0",
+        "org.eclipse.equinox.common" to "3.13.0",
+    )
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "org.eclipse.platform") {
+                forcedVersions[requested.name]?.let { useVersion(it) }
+            }
+        }
+    }
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
