@@ -20,6 +20,7 @@ repositories {
 val transitiveDependenciesWorkaround by configurations.creating
 
 dependencies {
+    compileOnly("com.github.spotbugs:spotbugs-annotations:_")
     implementation("com.google.guava:guava:_")
     implementation("org.eclipse.xtend:org.eclipse.xtend.lib:_")
     implementation("org.apache.commons:commons-collections4:_")
