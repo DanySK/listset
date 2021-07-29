@@ -1,5 +1,6 @@
 package org.danilopianini.util
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.List
 import org.apache.commons.collections4.list.SetUniqueList
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -12,6 +13,7 @@ class ListBackedSet<E> implements ListSet<E> {
 	@Delegate val SetUniqueList<E> backend
 	val List<E> base;
 
+	@SuppressFBWarnings("EI_EXPOSE_REP2")
 	new(List<E> base) {
 		this.base = base;
 		backend = SetUniqueList.setUniqueList(base)
